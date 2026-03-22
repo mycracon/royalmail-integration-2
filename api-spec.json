@@ -348,6 +348,37 @@
                   }
                 }
               }
+            },
+            "examples": {
+              "example1": {
+                "value": {
+                  "successCount": 1,
+                  "errorsCount": 0,
+                  "createdOrders": [
+                    {
+                      "orderIdentifier": 14706,
+                      "orderReference": "TestK003",
+                      "createdOn": "2026-03-22T05:05:50.5197703Z",
+                      "orderDate": "2026-03-22T00:00:00",
+                      "printedOn": "2026-03-22T05:05:51.1267406",
+                      "trackingNumber": "LT071626075GB",
+                      "packages": [
+                        {
+                          "packageNumber": 1,
+                          "trackingNumber": "LT071626075GB"
+                        }
+                      ],
+                      "label": "base64 string of label",
+                      "labelErrors": [],
+                      "generatedDocuments": [
+                        "Label",
+                        "CN22"
+                      ]
+                    }
+                  ],
+                  "failedOrders": []
+                }
+              }
             }
           }
         }
