@@ -11,7 +11,7 @@
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "version": "1.0.0"
+    "version": "2.0.0"
   },
   "externalDocs": {
     "description": "Find out more about spec",
@@ -34,7 +34,7 @@
     "/orders": {
       "post": {
         "summary": "Create an order",
-        "description": "",
+        "description": "Create an order in RoyalMail system and get tracking id, label",
         "operationId": "",
         "tags": [
           "orders"
@@ -114,7 +114,19 @@
           "description": "Production",
           "variables": {}
         }
-      ]
+      ],
+      "delete": {
+        "summary": "Cancel order",
+        "description": "To cancel an order, please send email to operations@shipa-e.com and CC kurt@shipa-e.com",
+        "operationId": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
