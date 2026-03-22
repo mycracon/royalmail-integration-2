@@ -123,11 +123,19 @@
           "orders"
         ],
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
+        "responses": {},
+        "servers": [
+          {
+            "url": "",
+            "description": "",
+            "variables": {}
+          },
+          {
+            "url": "",
+            "description": "",
+            "variables": {}
           }
-        }
+        ]
       }
     }
   },
