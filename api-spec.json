@@ -42,11 +42,70 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "$ref": "#/components/responses/create-order-response"
           }
         },
         "requestBody": {
-          "content": {}
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create-order-payload"
+              },
+              "examples": {
+                "example1": {
+                  "value": {
+                    "items": [
+                      {
+                        "orderReference": "TestK003",
+                        "recipient": {
+                          "address": {
+                            "fullName": "Judy Bert",
+                            "companyName": "",
+                            "addressLine1": "6780 Trail Ridge Dr",
+                            "addressLine2": "",
+                            "addressLine3": "",
+                            "city": "Lakeland",
+                            "county": "FL",
+                            "postcode": "33813",
+                            "countryCode": "US"
+                          },
+                          "phoneNumber": "1734986677",
+                          "emailAddress": "jbert@gmail.com"
+                        },
+                        "packages": [
+                          {
+                            "weightInGrams": 133,
+                            "customPackageFormatIdentifier": "",
+                            "dimensions": {
+                              "heightInMms": 155,
+                              "widthInMms": 130,
+                              "depthInMms": 70
+                            },
+                            "contents": [
+                              {
+                                "name": "Simparica Trio - Green (L)",
+                                "SKU": "",
+                                "quantity": 1,
+                                "unitValue": 145.33,
+                                "unitWeightInGrams": 133,
+                                "customsDescription": "Simparica Trio - Green (L)",
+                                "extendedCustomsDescription": "",
+                                "customsCode": "30049000",
+                                "originCountryCode": "DE"
+                              }
+                            ]
+                          }
+                        ],
+                        "subtotal": 145.33,
+                        "total": 145.33,
+                        "currencyCode": "USD"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "servers": [
@@ -210,6 +269,89 @@
         }
       }
     },
-    "securitySchemes": {}
+    "securitySchemes": {},
+    "responses": {
+      "create-order-response": {
+        "description": "",
+        "headers": {},
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "successCount": {
+                  "type": "number"
+                },
+                "errorsCount": {
+                  "type": "number"
+                },
+                "createdOrders": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "orderIdentifier": {
+                        "type": "number",
+                        "description": "ID of the order in RoyalMail system"
+                      },
+                      "orderReference": {
+                        "type": "string"
+                      },
+                      "createdOn": {
+                        "type": "string"
+                      },
+                      "orderDate": {
+                        "type": "string"
+                      },
+                      "printedOn": {
+                        "type": "string"
+                      },
+                      "trackingNumber": {
+                        "type": "string"
+                      },
+                      "packages": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "packageNumber": {
+                              "type": "number"
+                            },
+                            "trackingNumber": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "labelErrors": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "generatedDocuments": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "failedOrders": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
