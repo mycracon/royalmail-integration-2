@@ -1,0 +1,215 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RoyalMail API documentation",
+    "description": "This document describes how to integrate with RoyalMail via Shipad system.",
+    "termsOfService": "",
+    "contact": {
+      "email": ""
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Find out more about spec",
+    "url": ""
+  },
+  "servers": [
+    {
+      "url": "https://gasxk9v3h2.execute-api.us-east-1.amazonaws.com/prod",
+      "description": "Production",
+      "variables": {}
+    }
+  ],
+  "tags": [
+    {
+      "name": "orders",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/orders": {
+      "post": {
+        "summary": "Create an order",
+        "description": "",
+        "operationId": "",
+        "tags": [
+          "orders"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {}
+        }
+      },
+      "servers": [
+        {
+          "url": "https://gasxk9v3h2.execute-api.us-east-1.amazonaws.com/prod/",
+          "description": "Production",
+          "variables": {}
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "create-order-payload": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "orderReference": {
+                  "type": "string",
+                  "description": "<= 40 characters"
+                },
+                "recipient": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "object",
+                      "properties": {
+                        "fullName": {
+                          "type": "string"
+                        },
+                        "companyName": {
+                          "type": "string"
+                        },
+                        "addressLine1": {
+                          "type": "string"
+                        },
+                        "addressLine2": {
+                          "type": "string"
+                        },
+                        "addressLine3": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "county": {
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "type": "string"
+                        },
+                        "countryCode": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "phoneNumber": {
+                      "type": "string"
+                    },
+                    "emailAddress": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "packages": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "weightInGrams": {
+                        "type": "number"
+                      },
+                      "customPackageFormatIdentifier": {
+                        "type": "string"
+                      },
+                      "dimensions": {
+                        "type": "object",
+                        "properties": {
+                          "heightInMms": {
+                            "type": "number"
+                          },
+                          "widthInMms": {
+                            "type": "number"
+                          },
+                          "depthInMms": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "contents": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "SKU": {
+                              "type": "string"
+                            },
+                            "quantity": {
+                              "type": "number",
+                              "description": "The number of units in a given line"
+                            },
+                            "unitValue": {
+                              "type": "number",
+                              "description": "The price of a single unit excluding tax"
+                            },
+                            "unitWeightInGrams": {
+                              "type": "number"
+                            },
+                            "customsDescription": {
+                              "type": "string",
+                              "description": "<= 50 characters"
+                            },
+                            "extendedCustomsDescription": {
+                              "type": "string",
+                              "description": "<= 300 characters"
+                            },
+                            "customsCode": {
+                              "type": "string",
+                              "description": "HS Code"
+                            },
+                            "originCountryCode": {
+                              "type": "string",
+                              "description": "<= 3 characters"
+                            }
+                          },
+                          "required": [
+                            "quantity"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "subtotal": {
+                  "type": "number",
+                  "description": "The total value of all the goods in the order, excluding tax. This should not include retail shipping costs"
+                },
+                "total": {
+                  "type": "number",
+                  "description": "The sum of order subtotal, tax and retail shipping costs"
+                },
+                "currencyCode": {
+                  "type": "string",
+                  "description": "<= 3 characters"
+                }
+              },
+              "required": [
+                "recipient",
+                "subtotal",
+                "total"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {}
+  }
+}
