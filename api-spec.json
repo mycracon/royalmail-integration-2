@@ -119,7 +119,9 @@
         "summary": "Cancel order",
         "description": "To cancel an order, please send email to operations@shipa-e.com and CC kurt@shipa-e.com",
         "operationId": "",
-        "tags": [],
+        "tags": [
+          "orders"
+        ],
         "parameters": [],
         "responses": {
           "200": {
