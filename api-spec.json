@@ -291,7 +291,12 @@
         }
       }
     },
-    "securitySchemes": {},
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
     "responses": {
       "create-order-response": {
         "description": "",
@@ -406,5 +411,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
 }
